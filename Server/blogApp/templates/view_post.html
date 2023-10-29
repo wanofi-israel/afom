@@ -1,0 +1,36 @@
+{% extends "base.html" %} {% load humanize %} {% block pageContent %}
+
+
+<section class="blog_post" >
+    <div>
+        <div >
+            <div >
+               
+                   
+               
+                <div >
+                    <h4 >{{ post.title }}</h4>
+                   
+                    <center>
+                        <img src="{% if post.banner %}{{ post.banner.url }}{% else %}{{ MEDIA_URL}}/media/default/python-django.png{% endif %}" alt="" class="blog_post_img" >
+                    </center>
+                    
+                    <hr>
+                    <div >
+                        <span ><small>Category: <b>{{ post.category }}</b></small></span>
+                        <div class="blog_info">
+                            <div><small>Author: <b>{{ post.author }}</b></small></div>
+                            <div><small><i ></i> Published: <b>{{ post.date_added|timesince }}</b></small></div>
+                        </div>
+                        
+                    </div>
+                    <div ></div>
+                    <div>{{ post.blog_post|safe }}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+</div>{% endblock pageContent %}

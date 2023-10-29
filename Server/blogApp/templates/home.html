@@ -1,0 +1,40 @@
+{% extends "base.html" %} 
+{% load humanize %}
+ {% block pageContent %}
+
+
+<section class="text-center">
+    <h4 style="text-align: center;margin: 20px;" ><strong>All Posts</strong></h4>
+
+    <div class="cards">
+        {% for post in posts %}
+        
+            <div class="card">
+                <div class="card_img">
+                    <img src="{% if post.banner %}{{ post.banner.url }}{% else %}{{ MEDIA_URL}}/media/default/python-django.png{% endif %}" class="card_img" />
+                    <a href="#!">
+                       
+                    </a>
+                </div>
+                <div class="card_body">
+                    <h5 class="card-title">{{ post.title }}</h5>
+                    <!-- <div class="card-text">{{ post.blog_post|slice:":40"|safe }} </div> -->
+                    <div class="card_info">
+                        <p>{{post.author}}</p>
+                        <p>{{post.date_added|timesince}}</p>
+                    </div>
+                    <a href="{% url 'view-post' post.id %}" class="button">Read</a>
+                </div>
+            </div>
+      
+        {% endfor %}
+
+
+    </div>
+ 
+
+</section>
+
+
+</div> 
+{% endblock pageContent %}
